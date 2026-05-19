@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmShield TensorFlow.js Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="sidebar" aria-label="model status">
+        <div class="brand">
+          <div class="brand-mark">FS</div>
+          <div>
+            <h1>FarmShield AI</h1>
+            <p id="brandSubtitle">가상 농장 그래프 우선순위 시뮬레이션</p>
+          </div>
+        </div>
+
+        <section class="panel compact">
+          <div class="panel-title">
+            <span id="aiPanelTitle">브라우저 AI</span>
+            <span id="modelStatus" class="badge">TensorFlow.js</span>
+          </div>
+          <div id="modelDetail" class="model-detail">계산 대기 중</div>
+          <p class="note">
+            <span id="aiNote">샘플 농장 데이터를 기반으로 우선 확인 대상과 연결 흐름을 시각화합니다. 실제 적용 시 고객사 데이터와 검증 기준을 반영해 고도화할 수 있습니다.</span>
+          </p>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div class="utility-actions">
+            <a id="helpLink" class="utility-link" href="./help.html">도움말</a>
+            <button id="langToggle" class="utility-link" type="button">EN</button>
+          </div>
+          <div>
+            <h2 id="pageTitle">가상 농장 방역 우선순위 지도</h2>
+            <p id="scenarioText">시나리오를 계산하면 날짜별 우선순위 점수가 표시됩니다.</p>
+          </div>
+          <div class="status-strip">
+            <div>
+              <strong id="highRiskCount">0</strong>
+              <span id="highRiskLabel">높은 우선순위</span>
+            </div>
+            <div>
+              <strong id="avgRisk">0%</strong>
+              <span id="avgRiskLabel">평균 점수</span>
+            </div>
+            <div>
+              <strong id="currentDay">D+0</strong>
+              <span id="currentDayLabel">현재 단계</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="panel scenario-board">
+          <div class="panel-title">
+            <span id="scenarioPanelTitle">시나리오</span>
+            <button id="resetBtn" class="scenario-reset" title="가상 농장 배치를 다시 만들고 계산합니다" type="button">시나리오 재생성</button>
+          </div>
+
+          <div class="control-grid">
+            <label>
+              <span id="sourceFarmLabel">시작 농장</span>
+              <select id="sourceFarm"></select>
+            </label>
+
+            <label>
+              <span id="daysLabel">분석 기간</span>
+              <input id="daysRange" type="range" min="3" max="21" value="10" />
+              <output id="daysOut">10일</output>
+            </label>
+
+            <label>
+              <span id="pressureLabel">전파 압력</span>
+              <input id="infectivityRange" type="range" min="0.4" max="1.8" value="1.0" step="0.05" />
+              <output id="infectivityOut">1.00x</output>
+            </label>
+
+            <label>
+              <span id="controlLabel">방역 강도</span>
+              <input id="controlRange" type="range" min="0" max="0.8" value="0.25" step="0.05" />
+              <output id="controlOut">25%</output>
+            </label>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <section class="map-panel" aria-label="risk map">
+            <canvas id="mapCanvas" width="980" height="620"></canvas>
+            <div id="farmTooltip" class="farm-tooltip" hidden></div>
+            <div class="legend" aria-label="risk legend">
+              <span><i class="safe"></i><b id="legendLow">낮음</b></span>
+              <span><i class="watch"></i><b id="legendWatch">관찰</b></span>
+              <span><i class="danger"></i><b id="legendHigh">높음</b></span>
+              <span><i class="source"></i><b id="legendSource">시작점</b></span>
+            </div>
+          </section>
+
+          <section class="side-stack">
+            <div class="panel table-panel">
+              <div class="panel-title">
+                <span id="queueTitle">우선순위 목록</span>
+                <span id="updatedAt" class="muted">대기</span>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th id="thFarm">농장</th>
+                    <th id="thType">축종</th>
+                    <th id="thScore">점수</th>
+                    <th id="thReason">근거</th>
+                  </tr>
+                </thead>
+                <tbody id="riskTable"></tbody>
+              </table>
+            </div>
+
+            <div class="panel api-panel">
+              <div class="panel-title">
+                <span id="jsonTitle">SaaS JSON 페이로드</span>
+                <button id="copyBtn" class="icon-btn" title="JSON 복사" type="button">복사</button>
+              </div>
+              <pre id="apiPreview">{}</pre>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

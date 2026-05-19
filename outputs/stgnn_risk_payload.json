@@ -1,0 +1,150 @@
+{
+  "model": "improved_pytorch_stgnn",
+  "description": "GraphConv + GRU temporal encoder risk map output",
+  "risk_map": [
+    {
+      "farm_id": "F-041",
+      "x": 0.1886250480161365,
+      "y": 0.13313385628855154,
+      "livestock_type": 2,
+      "density": 0.2915465568731951,
+      "biosecurity": 0.33098110320188956,
+      "vehicle_contact": 0.05338193262717539,
+      "wind_exposure": 0.5911438161109712,
+      "risk_score": 0.2131,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-001",
+      "x": 0.22590095177912667,
+      "y": 0.16160135096955786,
+      "livestock_type": 1,
+      "density": 0.773026021794523,
+      "biosecurity": 0.27063301091573716,
+      "vehicle_contact": 0.9756223516367559,
+      "wind_exposure": 0.761139701990353,
+      "risk_score": 0.2124,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-029",
+      "x": 0.31101014804508015,
+      "y": 0.2686475126159278,
+      "livestock_type": 1,
+      "density": 0.5302432966552826,
+      "biosecurity": 0.27085000104613643,
+      "vehicle_contact": 0.746789611349026,
+      "wind_exposure": 0.2624605159228647,
+      "risk_score": 0.2119,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-037",
+      "x": 0.22682642530517896,
+      "y": 0.35249755777549985,
+      "livestock_type": 1,
+      "density": 0.8476128162438713,
+      "biosecurity": 0.37448055647482525,
+      "vehicle_contact": 0.5307695905990535,
+      "wind_exposure": 0.6060158207000109,
+      "risk_score": 0.2115,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-009",
+      "x": 0.22457514888864866,
+      "y": 0.30365949919627594,
+      "livestock_type": 1,
+      "density": 0.8355467732664759,
+      "biosecurity": 0.544186831653755,
+      "vehicle_contact": 0.5687411959528937,
+      "wind_exposure": 0.13979699812765745,
+      "risk_score": 0.2105,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-045",
+      "x": 0.2788322709324454,
+      "y": 0.28862572874822084,
+      "livestock_type": 0,
+      "density": 0.8515194102051952,
+      "biosecurity": 0.7846081555784967,
+      "vehicle_contact": 0.6424832759955477,
+      "wind_exposure": 0.778996354578129,
+      "risk_score": 0.2105,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-033",
+      "x": 0.12832542702510596,
+      "y": 0.1464008898639916,
+      "livestock_type": 1,
+      "density": 0.853093394636697,
+      "biosecurity": 0.7365553472118513,
+      "vehicle_contact": 0.7389840039155418,
+      "wind_exposure": 0.13105775155731325,
+      "risk_score": 0.21,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-005",
+      "x": 0.24524628077203464,
+      "y": 0.2810627454709467,
+      "livestock_type": 2,
+      "density": 0.762286714931841,
+      "biosecurity": 0.758571616930863,
+      "vehicle_contact": 0.96750973243421,
+      "wind_exposure": 0.32582535813815194,
+      "risk_score": 0.2095,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-035",
+      "x": 0.7208448780079902,
+      "y": 0.26097200056515757,
+      "livestock_type": 2,
+      "density": 0.7254813337608138,
+      "biosecurity": 0.279423052813065,
+      "vehicle_contact": 0.14033959706391264,
+      "wind_exposure": 0.41911431931630383,
+      "risk_score": 0.2087,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-017",
+      "x": 0.16971756245977881,
+      "y": 0.3126888233197024,
+      "livestock_type": 3,
+      "density": 0.45418117138386926,
+      "biosecurity": 0.2722932216151245,
+      "vehicle_contact": 0.9026023965438417,
+      "wind_exposure": 0.45577628983361107,
+      "risk_score": 0.2085,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-047",
+      "x": 0.795003555816658,
+      "y": 0.30515948912340346,
+      "livestock_type": 0,
+      "density": 0.6084079555178094,
+      "biosecurity": 0.5126670264461637,
+      "vehicle_contact": 0.2325699405288737,
+      "wind_exposure": 0.367511810115128,
+      "risk_score": 0.2084,
+      "risk_level": "low"
+    },
+    {
+      "farm_id": "F-006",
+      "x": 0.4508293180989304,
+      "y": 0.7323582509189172,
+      "livestock_type": 0,
+      "density": 0.3921035193132143,
+      "biosecurity": 0.29744112900160374,
+      "vehicle_contact": 0.47570492622593374,
+      "wind_exposure": 0.2269093490508841,
+      "risk_score": 0.2084,
+      "risk_level": "low"
+    }
+  ]
+}

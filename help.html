@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmShield AI 도움말</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="help-shell">
+      <header class="help-header">
+        <div>
+          <h1>FarmShield AI 사용 가이드</h1>
+          <p class="note">FarmShield AI의 화면 구성, 데이터 구조, 그래프 기반 우선순위 계산 방식을 안내합니다.</p>
+        </div>
+        <a class="utility-link" href="./index.html">지도로 돌아가기</a>
+      </header>
+
+      <section class="help-grid">
+        <article class="help-card">
+          <h2>서비스 개요</h2>
+          <p>
+            FarmShield AI는 농장 간 연결 관계와 농장별 환경 지표를 함께 분석해, 우선적으로 확인할
+            농장을 시각적으로 제시하는 의사결정 보조 화면입니다. 지도 위의 원은 농장 단위를, 선은 농장
+            간 영향 가능성이 있는 연결을 나타냅니다.
+          </p>
+        </article>
+
+        <article class="help-card">
+          <h2>샘플 데이터 구성</h2>
+          <ul>
+            <li>화면 검증을 위해 농장 44개를 네 개의 지역 군집으로 배치했습니다.</li>
+            <li>각 농장에는 좌표, 축종, 사육 밀도, 방역 수준, 차량 접촉도, 바람 노출도 지표가 포함됩니다.</li>
+            <li>현재 버전은 기능 검증용 샘플 데이터를 사용합니다. 실제 운영 시에는 고객사 데이터 구조에 맞춰 연동할 수 있습니다.</li>
+            <li>축종은 소, 돼지, 가금, 염소 네 종류로 나뉩니다.</li>
+          </ul>
+        </article>
+
+        <article class="help-card">
+          <h2>그래프 연결 방식</h2>
+          <p>
+            농장 사이의 거리가 가까울수록 연결이 강해집니다. 여기에 같은 축종인지, 차량 접촉도가 높은지도
+            조금씩 더합니다. 이렇게 만든 연결 가중치를 농장별로 합이 1이 되도록 정규화해서, 그래프 전파 계산에
+            사용할 수 있는 행렬로 만듭니다.
+          </p>
+        </article>
+
+        <article class="help-card">
+          <h2>우선순위 계산 흐름</h2>
+          <p>
+            시작 농장을 하나 고르면 그 농장의 점수를 100%로 두고 날짜별로 그래프를 따라 점수를 전파합니다.
+            사육 밀도, 차량 접촉, 바람 노출은 점수를 높이는 방향으로 작용하고, 방역 수준은 점수를 낮추는
+            방향으로 작용합니다. 화면의 전파 압력과 방역 강도 슬라이더는 이 계산을 더 강하게 또는 약하게
+            만듭니다.
+          </p>
+        </article>
+
+        <article class="help-card">
+          <h2>브라우저 AI 런타임</h2>
+          <p>
+            현재 프로토타입은 별도의 사전 학습 TensorFlow 모델 파일을 불러오는 구조가 아닙니다. 브라우저가
+            TensorFlow.js CDN을 정상적으로 불러오면, 농장 연결 행렬과 농장별 feature를 이용한 그래프 전파
+            규칙을 TensorFlow.js 텐서 연산으로 실행합니다. 이때 화면에는 "TensorFlow.js 텐서 기반 그래프
+            전파 규칙"이라고 표시됩니다. CDN이 차단되거나 오프라인이면 같은 입력과 같은 계산 의도를 사용하는
+            JavaScript fallback 경로로 전환됩니다.
+          </p>
+        </article>
+
+        <article class="help-card">
+          <h2>결과 해석</h2>
+          <ul>
+            <li>큰 원과 진한 링은 우선순위가 높은 농장을 뜻합니다.</li>
+            <li>굵고 붉은 선은 계산상 더 눈여겨볼 연결입니다.</li>
+            <li>지도 위의 #1, #2 같은 배지는 현재 날짜 기준 상위 농장 순위입니다.</li>
+            <li>농장을 탭하면 정보를 미리 볼 수 있고, "시작점으로 사용"을 누르면 그 농장을 기준으로 다시 계산합니다.</li>
+          </ul>
+        </article>
+
+        <article class="help-card">
+          <h2>적용 범위</h2>
+          <p>
+            현재 화면은 그래프 기반 우선순위 산정과 SaaS 연동 흐름을 확인하기 위한 프로토타입입니다.
+            실제 운영 적용 시에는 현장 데이터 검증, 모델 성능 평가, 업무 절차 반영, 전문가 검토를 거쳐
+            고객사 환경에 맞게 조정하는 것을 권장합니다.
+          </p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
